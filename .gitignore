@@ -1,0 +1,9 @@
+.DS_Store
+.vscode/
+.idea/
+build/
+*.log
+*.csv
+secrets.h
+*.local.h
+*.zip
