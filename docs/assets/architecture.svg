@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="690" viewBox="0 0 1100 690" role="img" aria-labelledby="title desc">
+<title id="title">ESP32 Wireless Security Lab 6.0 architecture</title>
+<desc id="desc">Browser dashboard requests a scan from the ESP32 HTTP server. ESP32 runs passive BLE and Wi-Fi scans sequentially, returns JSON, and the browser stores history locally and renders charts and CSV exports.</desc>
+<defs>
+  <style>
+    .bg{fill:#0b1220}.panel{fill:#172033;stroke:#3b4a63;stroke-width:2;rx:18}
+    .node{fill:#1e293b;stroke:#64748b;stroke-width:1.6;rx:14}
+    .head{font:700 24px Arial,sans-serif;fill:#f8fafc}
+    .txt{font:16px Arial,sans-serif;fill:#e2e8f0}
+    .small{font:13px Arial,sans-serif;fill:#94a3b8}
+    .arrow{stroke:#38bdf8;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    .green{stroke:#34d399}.blue{stroke:#38bdf8}
+  </style>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"/></marker>
+</defs>
+<rect class="bg" width="1100" height="690"/>
+<text x="550" y="48" text-anchor="middle" class="head">ESP32 Wireless Security Lab 6.0</text>
+<text x="550" y="76" text-anchor="middle" class="small">Local passive wireless observation architecture</text>
+
+<rect x="60" y="120" width="270" height="120" class="node"/>
+<text x="195" y="158" text-anchor="middle" class="head" style="font-size:20px">Chrome dashboard</text>
+<text x="195" y="188" text-anchor="middle" class="txt">HTTP GET /api/scan</text>
+<text x="195" y="214" text-anchor="middle" class="small">Local client · 192.168.4.1</text>
+
+<rect x="415" y="105" width="625" height="490" class="panel"/>
+<text x="727" y="145" text-anchor="middle" class="head" style="font-size:22px">ESP32 softAP + HTTP server</text>
+<text x="727" y="170" text-anchor="middle" class="small">WIFI_AP_STA · WebServer · sequential scan endpoint</text>
+
+<rect x="475" y="205" width="225" height="115" class="node"/>
+<text x="587" y="243" text-anchor="middle" class="head" style="font-size:19px">Passive BLE scan</text>
+<text x="587" y="272" text-anchor="middle" class="txt">4-second scan window</text>
+<text x="587" y="297" text-anchor="middle" class="small">BLE advertisements only</text>
+
+<rect x="755" y="205" width="225" height="115" class="node"/>
+<text x="867" y="243" text-anchor="middle" class="head" style="font-size:19px">Passive Wi-Fi scan</text>
+<text x="867" y="272" text-anchor="middle" class="txt">SSID · RSSI · channel</text>
+<text x="867" y="297" text-anchor="middle" class="small">2.4 GHz AP observations</text>
+
+<rect x="600" y="385" width="255" height="105" class="node"/>
+<text x="727" y="423" text-anchor="middle" class="head" style="font-size:20px">JSON response</text>
+<text x="727" y="452" text-anchor="middle" class="txt">Wi-Fi + BLE + channels</text>
+<text x="727" y="475" text-anchor="middle" class="small">No raw BLE address returned</text>
+
+<rect x="60" y="390" width="270" height="205" class="node"/>
+<text x="195" y="430" text-anchor="middle" class="head" style="font-size:20px">Browser-side features</text>
+<text x="195" y="468" text-anchor="middle" class="txt">Timestamp + localStorage</text>
+<text x="195" y="499" text-anchor="middle" class="txt">Last 40 scan snapshots</text>
+<text x="195" y="530" text-anchor="middle" class="txt">RSSI history + BLE diff</text>
+<text x="195" y="561" text-anchor="middle" class="txt">CSV export</text>
+
+<path class="arrow" d="M330 180 H402"/>
+<path class="arrow" d="M700 263 H744"/>
+<path class="arrow" d="M867 320 V355 H855 V385"/>
+<path class="arrow" d="M587 320 V355 H600 V385"/>
+<path class="arrow" d="M600 438 H350 V438 H330"/>
+<text x="366" y="165" class="small">request</text>
+<text x="462" y="368" class="small">scan results</text>
+<text x="365" y="420" class="small">JSON</text>
+<text x="550" y="642" text-anchor="middle" class="small">History is stored in the browser, not in ESP32 flash/NVS.</text>
+</svg>
