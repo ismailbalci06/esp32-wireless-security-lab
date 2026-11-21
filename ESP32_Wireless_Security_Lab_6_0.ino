@@ -544,7 +544,6 @@ void setup() {
   if (started) {
     Serial.println("Access Point started!");
     Serial.print("Network: "); Serial.println(AP_SSID);
-    Serial.print("Password: "); Serial.println(AP_PASSWORD);
     Serial.print("Dashboard: http://"); Serial.println(WiFi.softAPIP());
   } else {
     Serial.println("Access Point failed!");
